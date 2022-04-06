@@ -6,7 +6,7 @@ part 'post_model.g.dart';
 
 @freezed
 class PostModel with _$PostModel implements PostEntity {
-  factory PostModel(
+  const factory PostModel(
     String title,
     String body,
   ) = _PostModel;
