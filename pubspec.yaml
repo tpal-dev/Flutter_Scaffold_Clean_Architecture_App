@@ -1,0 +1,34 @@
+name: http_client
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  bloc: ^8.0.3
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.6
+  flutter_bloc: ^8.0.1
+  freezed_annotation: ^1.1.0
+  get_it: ^7.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  build_runner: ^2.1.8
+  flutter_lints: ^1.0.0
+  freezed: ^1.1.1
+  json_serializable: ^6.1.5
+
+flutter:
+  uses-material-design: true
+
+
