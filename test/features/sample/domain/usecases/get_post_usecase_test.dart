@@ -23,7 +23,7 @@ void main() {
         'should get PostEntity form the repository',
         () async {
           // arrange
-          when(() => mockRepository.getPost()).thenAnswer((_) async => const Right(mockedPost));
+          when(() => mockRepository.getPost()).thenAnswer((_) async => const Right<Failure, PostEntity>(mockedPost));
           // act
           final result = await useCase();
           // assert
@@ -37,7 +37,8 @@ void main() {
         'should get Failure form the repository',
         () async {
           // arrange
-          when(() => mockRepository.getPost()).thenAnswer((_) async => const Left(mockedFailureNotFound));
+          when(() => mockRepository.getPost())
+              .thenAnswer((_) async => const Left<Failure, PostEntity>(mockedFailureNotFound));
           // act
           final result = await useCase();
           // assert
