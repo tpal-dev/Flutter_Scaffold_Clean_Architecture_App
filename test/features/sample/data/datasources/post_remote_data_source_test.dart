@@ -18,26 +18,28 @@ void main() {
   });
   group('PostRemoteDataSource', () {
     test('Should answer with PostModel on successful call', () async {
-      when(() => postRemoteDataSourceImpl.getPost())
+      when(() => mockHttpClient.get<PostModel>(any(), fromJson: any(named: 'fromJson')))
           .thenAnswer((_) async => const Right<Failure, PostModel>(mockedPostModel));
 
       final result = await postRemoteDataSourceImpl.getPost();
 
       expect(result, const Right<Failure, PostModel>(mockedPostModel));
-      verify(() => postRemoteDataSourceImpl.getPost()).called(1);
-      verifyNoMoreInteractions(postRemoteDataSourceImpl);
+      verify(() => mockHttpClient.get<PostModel>(any(), fromJson: any(named: 'fromJson')))
+          .called(1);
+      verifyNoMoreInteractions(mockHttpClient);
     });
 
     test('Should answer with Failure on unsuccessful call', () async {
       // arrange
-      when(() => postRemoteDataSourceImpl.getPost())
+      when(() => mockHttpClient.get<PostModel>(any(), fromJson: any(named: 'fromJson')))
           .thenAnswer((_) async => const Left<Failure, PostModel>(mockedFailureNotFound));
       // act
       final result = await postRemoteDataSourceImpl.getPost();
       // assert
       expect(result, const Left<Failure, PostModel>(mockedFailureNotFound));
-      verify(() => postRemoteDataSourceImpl.getPost()).called(1);
-      verifyNoMoreInteractions(postRemoteDataSourceImpl);
+      verify(() => mockHttpClient.get<PostModel>(any(), fromJson: any(named: 'fromJson')))
+          .called(1);
+      verifyNoMoreInteractions(mockHttpClient);
     });
   });
 }
