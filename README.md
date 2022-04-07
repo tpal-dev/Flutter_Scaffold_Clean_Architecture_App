@@ -8,7 +8,7 @@ Project include
 - bloc,
 - get_it 
 - dio with error handling
-- TODO: Unit tests samples
+- unit tests: mocktail + bloc_test
 
 ## Useful Resources 🧑🏼‍🎓
 
@@ -33,6 +33,14 @@ Get_it:
 
 Dio: 
 - https://pub.dev/packages/dio
+
+Mocktail: 
+- https://pub.dev/packages/mocktail
+- https://fredgrott.medium.com/easy-mocking-with-mocktail-f3fd10a1eecd
+
+Bloc_test: 
+- https://pub.dev/packages/bloc_test
+- https://www.youtube.com/watch?v=S6jFBiiP0Mc
 
 Either class - Functional programing: 
 - https://medium.com/nerd-for-tech/better-error-handling-with-either-type-in-dart-b91bef20d716
