@@ -1,9 +1,11 @@
-abstract class PostEntity {
-  const PostEntity(
-    this.title,
-    this.body,
-  );
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final String title;
-  final String body;
+part 'post_entity.freezed.dart';
+
+@freezed
+class PostEntity with _$PostEntity {
+  const factory PostEntity({
+    required String title,
+    required String text,
+  }) = _PostEntity;
 }

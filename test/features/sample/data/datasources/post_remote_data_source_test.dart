@@ -19,11 +19,11 @@ void main() {
   group('PostRemoteDataSource', () {
     test('Should answer with PostModel on successful call', () async {
       when(() => postRemoteDataSourceImpl.getPost())
-          .thenAnswer((_) async => const Right<Failure, PostModel>(mockedPost));
+          .thenAnswer((_) async => const Right<Failure, PostModel>(mockedPostModel));
 
       final result = await postRemoteDataSourceImpl.getPost();
 
-      expect(result, const Right<Failure, PostModel>(mockedPost));
+      expect(result, const Right<Failure, PostModel>(mockedPostModel));
       verify(() => postRemoteDataSourceImpl.getPost()).called(1);
       verifyNoMoreInteractions(postRemoteDataSourceImpl);
     });

@@ -18,11 +18,11 @@ void main() {
   group('PostRepositoryImpl', () {
     test('Should answer with ProfileModel on successful call', () async {
       when(() => mockPostRemoteDataSource.getPost())
-          .thenAnswer((_) async => const Right<Failure, PostModel>(mockedPost));
+          .thenAnswer((_) async => const Right<Failure, PostModel>(mockedPostModel));
 
       final result = await repository.getPost();
 
-      expect(result, const Right<Failure, PostModel>(mockedPost));
+      expect(result, const Right<Failure, PostModel>(mockedPostModel));
       verify(() => mockPostRemoteDataSource.getPost()).called(1);
       verifyNoMoreInteractions(mockPostRemoteDataSource);
     });

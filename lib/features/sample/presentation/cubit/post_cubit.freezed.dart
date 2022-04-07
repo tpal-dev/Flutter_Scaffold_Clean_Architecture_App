@@ -216,6 +216,8 @@ abstract class _$LoadSuccessCopyWith<$Res> {
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
       __$LoadSuccessCopyWithImpl<$Res>;
   $Res call({PostEntity post});
+
+  $PostEntityCopyWith<$Res> get post;
 }
 
 /// @nodoc
@@ -238,6 +240,13 @@ class __$LoadSuccessCopyWithImpl<$Res> extends _$PostStateCopyWithImpl<$Res>
           : post // ignore: cast_nullable_to_non_nullable
               as PostEntity,
     ));
+  }
+
+  @override
+  $PostEntityCopyWith<$Res> get post {
+    return $PostEntityCopyWith<$Res>(_value.post, (value) {
+      return _then(_value.copyWith(post: value));
+    });
   }
 }
 

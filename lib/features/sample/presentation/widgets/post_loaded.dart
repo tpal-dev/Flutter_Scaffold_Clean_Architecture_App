@@ -8,10 +8,11 @@ class PostLoaded extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(post.title, style: AppTextStyle.title),
-        Text(post.body),
+        Text(post.title, textAlign: TextAlign.center, style: AppTextStyle.title),
+        const SizedBox(height: 32.0),
+        Text(post.text, textAlign: TextAlign.center),
       ],
     );
   }

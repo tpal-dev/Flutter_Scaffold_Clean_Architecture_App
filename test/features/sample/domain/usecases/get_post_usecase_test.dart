@@ -23,11 +23,12 @@ void main() {
         'should get PostEntity form the repository',
         () async {
           // arrange
-          when(() => mockRepository.getPost()).thenAnswer((_) async => const Right<Failure, PostEntity>(mockedPost));
+          when(() => mockRepository.getPost())
+              .thenAnswer((_) async => const Right<Failure, PostEntity>(mockedPostEntity));
           // act
           final result = await useCase();
           // assert
-          expect(result, const Right<Failure, PostEntity>(mockedPost));
+          expect(result, const Right<Failure, PostEntity>(mockedPostEntity));
           verify((() => mockRepository.getPost())).called(1);
           verifyNoMoreInteractions(mockRepository);
         },

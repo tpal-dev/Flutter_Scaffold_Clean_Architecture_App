@@ -16,6 +16,6 @@ class PostRepositoryImpl implements PostRepository {
     // but for now it's only remote data sample
 
     final remoteResponse = await _remoteDataSource.getPost();
-    return remoteResponse;
+    return remoteResponse.mapRight((model) => model.toEntity());
   }
 }

@@ -20,13 +20,13 @@ void main() {
     blocTest<PostCubit, PostState>(
       'emits [loadSuccess] when user get post successful',
       build: () {
-        when(() => mockGetPostUseCase()).thenAnswer((_) async => const Right(mockedPost));
+        when(() => mockGetPostUseCase()).thenAnswer((_) async => const Right(mockedPostEntity));
 
         return getCubit();
       },
       act: (PostCubit cubit) => cubit.load(),
       expect: () => const <PostState>[
-        PostState.loadSuccess(mockedPost),
+        PostState.loadSuccess(mockedPostEntity),
       ],
       verify: (_) {
         verify(() => mockGetPostUseCase()).called(1);

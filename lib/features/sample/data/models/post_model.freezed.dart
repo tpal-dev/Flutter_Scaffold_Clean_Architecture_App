@@ -21,10 +21,12 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 class _$PostModelTearOff {
   const _$PostModelTearOff();
 
-  _PostModel call(String title, String body) {
+  _PostModel call(
+      {@JsonKey(name: 'title') required String title,
+      @JsonKey(name: 'body') required String body}) {
     return _PostModel(
-      title,
-      body,
+      title: title,
+      body: body,
     );
   }
 
@@ -38,7 +40,9 @@ const $PostModel = _$PostModelTearOff();
 
 /// @nodoc
 mixin _$PostModel {
+  @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'body')
   String get body => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +55,9 @@ mixin _$PostModel {
 abstract class $PostModelCopyWith<$Res> {
   factory $PostModelCopyWith(PostModel value, $Res Function(PostModel) then) =
       _$PostModelCopyWithImpl<$Res>;
-  $Res call({String title, String body});
+  $Res call(
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'body') String body});
 }
 
 /// @nodoc
@@ -86,7 +92,9 @@ abstract class _$PostModelCopyWith<$Res> implements $PostModelCopyWith<$Res> {
           _PostModel value, $Res Function(_PostModel) then) =
       __$PostModelCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String body});
+  $Res call(
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'body') String body});
 }
 
 /// @nodoc
@@ -104,11 +112,11 @@ class __$PostModelCopyWithImpl<$Res> extends _$PostModelCopyWithImpl<$Res>
     Object? body = freezed,
   }) {
     return _then(_PostModel(
-      title == freezed
+      title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      body == freezed
+      body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
@@ -118,15 +126,20 @@ class __$PostModelCopyWithImpl<$Res> extends _$PostModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PostModel implements _PostModel {
-  const _$_PostModel(this.title, this.body);
+class _$_PostModel extends _PostModel {
+  const _$_PostModel(
+      {@JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'body') required this.body})
+      : super._();
 
   factory _$_PostModel.fromJson(Map<String, dynamic> json) =>
       _$$_PostModelFromJson(json);
 
   @override
+  @JsonKey(name: 'title')
   final String title;
   @override
+  @JsonKey(name: 'body')
   final String body;
 
   @override
@@ -160,15 +173,20 @@ class _$_PostModel implements _PostModel {
   }
 }
 
-abstract class _PostModel implements PostModel {
-  const factory _PostModel(String title, String body) = _$_PostModel;
+abstract class _PostModel extends PostModel {
+  const factory _PostModel(
+      {@JsonKey(name: 'title') required String title,
+      @JsonKey(name: 'body') required String body}) = _$_PostModel;
+  const _PostModel._() : super._();
 
   factory _PostModel.fromJson(Map<String, dynamic> json) =
       _$_PostModel.fromJson;
 
   @override
+  @JsonKey(name: 'title')
   String get title;
   @override
+  @JsonKey(name: 'body')
   String get body;
   @override
   @JsonKey(ignore: true)

@@ -5,10 +5,8 @@ import '../dependencies.dart';
 
 void setup() {
   sl.registerLazySingleton<Dio>(() => Dio());
-  sl.registerLazySingleton<HttpClient>(
-    () => HttpClient(
-      sl(),
-      const String.fromEnvironment('base_url', defaultValue: 'https://jsonplaceholder.typicode.com/'),
-    ),
-  );
+
+  const baseUrl = String.fromEnvironment('base_url', defaultValue: 'https://jsonplaceholder.typicode.com/');
+
+  sl.registerLazySingleton<HttpClient>(() => HttpClient(sl(), baseUrl));
 }

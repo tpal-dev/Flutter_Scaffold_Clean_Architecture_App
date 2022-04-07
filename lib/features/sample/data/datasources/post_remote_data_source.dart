@@ -15,6 +15,8 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
   final HttpClient _client;
 
   @override
-  Future<Either<Failure, PostModel>> getPost() =>
-      _client.get('/posts/1', fromJson: (json) => PostModel.fromJson(json));
+  Future<Either<Failure, PostModel>> getPost() => _client.get(
+        '/posts/1',
+        fromJson: (json) => PostModel.fromJson(json),
+      );
 }
