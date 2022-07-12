@@ -28,18 +28,18 @@ class _PostPageBody extends StatelessWidget {
     return BlocConsumer<PostCubit, PostState>(
       listener: _reactOnState,
       builder: (BuildContext context, PostState state) {
-        return state.map(
-          loadInProgress: (_) => const Center(child: CircularProgressIndicator()),
-          loadSuccess: (result) => PostLoaded(post: result.post),
-          loadFailure: (error) => const Center(child: Text('No data')),
+        return state.when(
+          loadInProgress: () => const Center(child: CircularProgressIndicator()),
+          loadSuccess: (post) => PostLoaded(post: post),
+          loadFailure: (_) => const Center(child: Text('No data')),
         );
       },
     );
   }
 
   void _reactOnState(BuildContext context, PostState state) {
-    state.maybeMap(
-      loadFailure: (error) => AppSnackBar.showErrorSnackBar(context, error.failure),
+    state.maybeWhen(
+      loadFailure: (failure) => AppSnackBar.showErrorSnackBar(context, failure),
       orElse: () {},
     );
   }
